@@ -1,13 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>TaskManager</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>TaskManager</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="data:image/png;base64,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"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="mat-typography">
+    <app-root></app-root>
+  </body>
 </html>
