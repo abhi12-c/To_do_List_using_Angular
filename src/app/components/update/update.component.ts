@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ServiceService } from '../service.service';
-import { TodosComponent } from '../todos/todos.component';
+
 const dataSource = JSON.parse(localStorage.getItem('array') as any);
 
 @Component({
@@ -23,7 +23,7 @@ export class UpdateComponent implements OnInit {
     'updetails',
   ];
   InputTask = new FormGroup({
-    task_id: new FormControl(''),
+    task_id: new FormControl(),
     taskname: new FormControl(''),
     summary: new FormControl(''),
     priority: new FormControl('Medium'),
@@ -33,13 +33,21 @@ export class UpdateComponent implements OnInit {
   constructor(
     private dialogRef: MatDialogRef<UpdateComponent>,
     private service: ServiceService
-  ) {}
+  ) {
+    this.InputTask = new FormGroup({
+      task_id: new FormControl(dataSource[this.service.myData].task_id),
+      taskname: new FormControl(dataSource[this.service.myData].taskname),
+      summary: new FormControl(dataSource[this.service.myData].summary),
+      priority: new FormControl(dataSource[this.service.myData].priority),
+      status: new FormControl(dataSource[this.service.myData].status),
+    });
+  }
 
   ngOnInit() {}
-  setFormValue() {}
+
   onSubmitTask() {
     this.index = this.service.myData;
-    this.setFormValue();
+
     console.log(dataSource[this.index]);
     dataSource[this.index].task_id = this.InputTask.value.task_id;
     dataSource[this.index].taskname = this.InputTask.value.taskname;

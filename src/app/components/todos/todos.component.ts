@@ -63,10 +63,10 @@ export class TodosComponent implements OnInit {
     }
   }
   updateRecord(i: any) {
+    this.service.myData = i;
     this.matDialog.open(UpdateComponent, {
       width: '350px',
+      data: this.dataSource,
     });
-
-    this.service.myData = i;
   }
 }
