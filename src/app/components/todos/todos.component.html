@@ -1,5 +1,5 @@
 <div
-  class="bg-[url('https://cdn.pixabay.com/photo/2015/11/19/21/10/glasses-1052010_960_720.jpg')] w-full h-screen bg-center bg-cover bg-dunes"
+  class="bg-[url('https://images.unsplash.com/photo-1495465798138-718f86d1a4bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')] w-full h-screen bg-center bg-cover bg-dunes"
 >
   <div
     class="container h-40 text-5xl text-black flex justify-center py-8 font-bold font-serif"
@@ -7,18 +7,19 @@
     Hello , {{ userName }}
   </div>
   <div
-    class="container h-40 text-5xl text-black flex justify-center py-8 font-bold font-serif"
+    class="container h-40 text-5xl text-black flex justify-center font-bold font-serif"
   >
     <ngx-typed-js
       [strings]="['Welcome To The Task Manager']"
       [loop]="true"
       [typeSpeed]="100"
+      [backSpeed]="100"
     >
       <span class="typing block"></span>
     </ngx-typed-js>
   </div>
   <div class="containder bg-lime-200 flex justify-center">
-    <h1 class="text-black font-bold font-serif y-2">
+    <h1 class="text-black font-bold font-serif">
       <span class="text-3xl font-bold">Task To Be Done</span>
     </h1>
   </div>
