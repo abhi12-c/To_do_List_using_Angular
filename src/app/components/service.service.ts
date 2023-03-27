@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class ServiceService {
+  static myData: any;
   constructor() {}
   public myData!: string;
 }

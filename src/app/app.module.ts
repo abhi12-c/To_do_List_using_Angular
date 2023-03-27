@@ -11,13 +11,16 @@ import { TodosComponent } from './components/todos/todos.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-
+import { ToastModule } from '@syncfusion/ej2-angular-notifications';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { UpdateComponent } from './components/update/update.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { NgxTypedJsModule } from 'ngx-typed-js';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,10 @@ import { UpdateComponent } from './components/update/update.component';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    ToastModule,
+    MatMenuModule,
+    MatIconModule,
+    NgxTypedJsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

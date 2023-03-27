@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
+import { UpdateComponent } from '../update/update.component';
 
 @Component({
   selector: 'app-task',
@@ -16,7 +18,7 @@ export class TaskComponent {
     priority: new FormControl('Medium'),
     status: new FormControl('To DO'),
   });
-
+  constructor(private dialogRef: MatDialogRef<UpdateComponent>) {}
   onSubmitTask() {
     if ((localStorage.getItem('array') as any) != null) {
       this.arr = JSON.parse(localStorage.getItem('array') as any);
@@ -51,7 +53,12 @@ export class TaskComponent {
       status: new FormControl('To DO'),
     });
     localStorage.setItem('array', JSON.stringify(this.arr));
+    this.dialogRef.close();
+    location.reload();
 
     console.log(this.arr);
+  }
+  cancel() {
+    this.dialogRef.close();
   }
 }

@@ -1,9 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
-
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatTable } from '@angular/material/table';
 import { TaskComponent } from '../task/task.component';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateComponent } from '../update/update.component';
@@ -23,8 +19,9 @@ export class TodosComponent implements OnInit {
     'summary',
     'status',
     'priority',
-    'deldetails',
-    'updetails',
+    // 'deldetails',
+    // 'updetails',
+    'action',
   ];
   dataSource = JSON.parse(localStorage.getItem('array') as any);
 
@@ -62,10 +59,18 @@ export class TodosComponent implements OnInit {
       return;
     }
   }
+  async addTask() {
+    this.matDialog.open(TaskComponent, {
+      width: '660px',
+      height: '700px',
+      data: this.dataSource,
+    });
+  }
   updateRecord(i: any) {
     this.service.myData = i;
     this.matDialog.open(UpdateComponent, {
-      width: '350px',
+      width: '660px',
+      height: '700px',
       data: this.dataSource,
     });
   }

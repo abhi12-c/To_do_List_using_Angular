@@ -1,66 +1,94 @@
 <div
-  class="container bg-fuchsia-100 h-40 text-4xl text-red-700 flex justify-center py-8"
+  class="bg-[url('https://cdn.pixabay.com/photo/2015/11/19/21/10/glasses-1052010_960_720.jpg')] w-full h-screen bg-center bg-cover bg-dunes"
 >
-  Welcome {{ userName }} to the Tasks
-</div>
-<div class="containder bg-lime-200 flex justify-center">
-  <h1 class="text-4xl text-blue-300 font-bold font-serif">Task To Be Done</h1>
-</div>
-
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  <ng-container matColumnDef="task_id">
-    <th mat-header-cell *matHeaderCellDef>TaskID</th>
-    <td mat-cell *matCellDef="let element">{{ element.task_id }}</td>
-  </ng-container>
-
-  <!-- Name Column -->
-  <ng-container matColumnDef="taskname">
-    <th mat-header-cell *matHeaderCellDef>TaskName</th>
-    <td mat-cell *matCellDef="let element">{{ element.taskname }}</td>
-  </ng-container>
-
-  <!-- Weight Column -->
-  <ng-container matColumnDef="summary">
-    <th mat-header-cell *matHeaderCellDef>Summary</th>
-    <td mat-cell *matCellDef="let element">{{ element.summary }}</td>
-  </ng-container>
-
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="status">
-    <th mat-header-cell *matHeaderCellDef>status</th>
-    <td mat-cell *matCellDef="let element">{{ element.status }}</td>
-  </ng-container>
-  <ng-container matColumnDef="priority">
-    <th mat-header-cell *matHeaderCellDef>Priority</th>
-    <td mat-cell *matCellDef="let element">{{ element.priority }}</td>
-  </ng-container>
-  <ng-container matColumnDef="deldetails">
-    <th mat-header-cell *matHeaderCellDef>Delete Task</th>
-    <td mat-cell *matCellDef="let i = index">
-      <button mat-raised-button color="primary" (click)="delRecord(i)">
-        Delete
-      </button>
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="updetails">
-    <th mat-header-cell *matHeaderCellDef>Update Task</th>
-    <td mat-cell *matCellDef="let i = index">
-      <button mat-raised-button color="primary" (click)="updateRecord(i)">
-        update
-      </button>
-    </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-</table>
-<br /><br /><br />
-<div class="conatiner flex justify-center">
-  <button>
-    <a
-      (click)="goTODOS()"
-      class="text-gray-100 bg-red-600 rounded-md bg-gradient-to-tr px-4 p-6"
-      >Click To add Task</a
+  <div
+    class="container h-40 text-5xl text-black flex justify-center py-8 font-bold font-serif"
+  >
+    Hello , {{ userName }}
+  </div>
+  <div
+    class="container h-40 text-5xl text-black flex justify-center py-8 font-bold font-serif"
+  >
+    <ngx-typed-js
+      [strings]="['Welcome To The Task Manager']"
+      [loop]="true"
+      [typeSpeed]="100"
     >
-  </button>
+      <span class="typing block"></span>
+    </ngx-typed-js>
+  </div>
+  <div class="containder bg-lime-200 flex justify-center">
+    <h1 class="text-black font-bold font-serif y-2">
+      <span class="text-3xl font-bold">Task To Be Done</span>
+    </h1>
+  </div>
+
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8 bg-fuchsia-100"
+  >
+    <ng-container matColumnDef="task_id">
+      <th mat-header-cell *matHeaderCellDef>TaskID</th>
+      <td mat-cell *matCellDef="let element">{{ element.task_id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="taskname">
+      <th mat-header-cell *matHeaderCellDef>TaskName</th>
+      <td mat-cell *matCellDef="let element">{{ element.taskname }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="summary">
+      <th mat-header-cell *matHeaderCellDef>Summary</th>
+      <td mat-cell *matCellDef="let element">{{ element.summary }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>status</th>
+      <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+    </ng-container>
+    <ng-container matColumnDef="priority">
+      <th mat-header-cell *matHeaderCellDef>Priority</th>
+      <td mat-cell *matCellDef="let element">{{ element.priority }}</td>
+    </ng-container>
+    <!-- <ng-container matColumnDef="deldetails">
+      <th mat-header-cell *matHeaderCellDef>Delete Task</th>
+      <td mat-cell *matCellDef="let i = index">
+        <button mat-raised-button color="primary" (click)="delRecord(i)">
+          Delete
+        </button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="updetails">
+      <th mat-header-cell *matHeaderCellDef>Update Task</th>
+      <td mat-cell *matCellDef="let i = index">
+        <button mat-raised-button color="primary" (click)="updateRecord(i)">
+          update
+        </button>
+      </td>
+    </ng-container> -->
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let i = index">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon> border_color</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="updateRecord(i)">Edit</button>
+          <hr style="height: 2px" />
+          <button mat-menu-item (click)="delRecord(i)">Delete</button>
+        </mat-menu>
+      </td></ng-container
+    >
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <br /><br /><br />
+  <div class="conatiner flex justify-center">
+    <button mat-raised-button color="primary" (click)="addTask()">
+      Click to add Task
+    </button>
+  </div>
 </div>
